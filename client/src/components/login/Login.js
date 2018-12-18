@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './login.css';
 
 class Login extends Component {
     state = {
@@ -28,7 +29,7 @@ class Login extends Component {
                         <input type="password" id='password' onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
-                        <button className="btn pink lighten-1 z-depth-0">Sign In</button>
+                        <button className="btn teal lighten-2 z-depth-0">Sign In</button>
                     </div>
                 </form>
             </div>
