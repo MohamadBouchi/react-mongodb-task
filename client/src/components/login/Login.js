@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './login.css';
+import './Login.css';
 
 class Login extends Component {
     state = {
@@ -17,7 +17,7 @@ class Login extends Component {
     };
     render() {
         return (
-            <div className='container'>
+            <div className='login-container container'>
                 <form className="white" onSubmit={this.handleSubmit}>
                     <h5 className="grey-text text-darken-3">Sign In</h5>
                     <div className="input-field">
