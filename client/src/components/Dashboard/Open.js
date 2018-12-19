@@ -1,12 +1,13 @@
 import React from 'react'
 import TaskList from '../Task/TaskList';
 
-const Open = () => {
+const Open = (props) => {
+  let tasks = props.tasks;
   return (
     <div>
-      <h5>Open</h5>
+      <h5>({tasks.length}) Open</h5>
       <hr></hr>
-      <TaskList />
+      <TaskList tasks={tasks}/>
     </div>
   )
 }
