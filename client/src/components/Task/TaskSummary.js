@@ -11,8 +11,8 @@ class TaskSummary extends Component {
         return (
             <div className='card z-depth-0 task-summary' draggable onDragStart={(e) => {this.onDragStart(e)}}>
                 <div className='card-content grey-text text-darken-3'>
-                    <span className='card-title'>{this.props.name}
-                        {/* <div className="btn btn-floating right">{this.props.assigend}</div> */}
+                    <span className='card-title'>
+                    <div className="left">{this.props.name}</div>
                         <img className="btn btn-floating right" src={require('../../me.png')}/>
                     </span>
                     <br></br>
