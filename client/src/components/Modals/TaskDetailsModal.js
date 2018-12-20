@@ -77,7 +77,7 @@ order by a.nl, b.hkdnr
             </Tab>
             <Tab title="Sql">
                 <div id="sqltab">
-                    <Input id='sqltext' s={12} type='textarea' disabled defaultValue={sql}/>
+                    <Input id='sqltext' s={10} type='textarea' disabled defaultValue={sql}/>
                     <Button id='sqlcopy'>copy</Button>
                 </div>
             </Tab>
