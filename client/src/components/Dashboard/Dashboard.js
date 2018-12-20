@@ -26,7 +26,7 @@ class Dashboard extends Component {
     let id = data.id;
     if(status === 'open'){
       let newTasks = tasks.open.filter(t => {
-        if (t.id == id){
+        if (t.id === id){
           t.status = name
         } 
         return t
@@ -38,7 +38,7 @@ class Dashboard extends Component {
     }
     else if(status === 'inprocessing'){
       let newTasks = tasks.inprocessing.filter(t => {
-        if (t.id == id){
+        if (t.id === id){
           t.status = name
         } 
         return t
@@ -50,7 +50,7 @@ class Dashboard extends Component {
     }
     else if(status === 'waiting'){
       let newTasks = tasks.waiting.filter(t => {
-        if (t.id == id){
+        if (t.id === id){
           t.status = name
         } 
         return t
@@ -62,7 +62,7 @@ class Dashboard extends Component {
     }
     else if(status === 'finished'){
       let newTasks = tasks.finished.filter(t => {
-        if (t.id == id){
+        if (t.id === id){
           t.status = name
         } 
         return t

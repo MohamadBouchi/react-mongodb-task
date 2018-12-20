@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
-
+import './Navbar.css'
 const Navbar = () => {
     return (
         <div className="navbar-fixed">

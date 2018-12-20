@@ -8,12 +8,17 @@ class TaskSummary extends Component {
         e.dataTransfer.setData('data',stringData);
     }
     render() {
+        let Enabledraggable;
+        if (this.props.status === 'finished')
+            Enabledraggable = false;
+        else
+            Enabledraggable = true;
         return (
-            <div className='card z-depth-0 task-summary' draggable onDragStart={(e) => {this.onDragStart(e)}}>
+            <div className='card z-depth-0 task-summary' draggable={Enabledraggable} onDragStart={(e) => {this.onDragStart(e)}}>
                 <div className='card-content grey-text text-darken-3'>
                     <span className='card-title'>
                     <div className="left">{this.props.name}</div>
-                        <img className="btn btn-floating right" src={require('../../me.png')}/>
+                        <img className="btn btn-floating right" alt='MO' src={require('../../me.png')}/>
                     </span>
                     <br></br>
                     <hr></hr>
