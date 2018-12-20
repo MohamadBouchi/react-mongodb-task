@@ -21,7 +21,7 @@ class Dashboard extends Component {
     e.preventDefault();
   }
   onDrop = (e, name, tasks) => {
-    let data = JSON.parse(e.dataTransfer.getData("data"));
+    let data = JSON.parse(e.dataTransfer.getData("text"));
     let status = data.status;
     let id = data.id;
     if(status === 'open'){

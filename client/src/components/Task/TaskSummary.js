@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './Task.css';
+import { Modal, Button } from 'react-materialize';
+import TaskDetailsModal from '../Modals/TaskDetailsModal';
 
 class TaskSummary extends Component {
     onDragStart = (e) => {
         let data = {id: this.props.id, status: this.props.status};
         let stringData = JSON.stringify(data)
-        e.dataTransfer.setData('data',stringData);
+        e.dataTransfer.setData('text',stringData);
     }
     render() {
         let Enabledraggable;
@@ -25,7 +27,14 @@ class TaskSummary extends Component {
                     <br></br>
                     <p className='left-align'>{this.props.desc}</p>
                     <br></br>
-                    <p className='left-align grey-text'>3rd septemper</p>
+                    <div className="card-action">
+                    <p className='grey-text'>3rd septemper</p>
+                    <Modal
+                        header='Details'
+                        trigger={<p ><a className='details'>Details</a></p>}>
+                        <TaskDetailsModal/>
+                    </Modal>
+                    </div>
                 </div>
             </div>
         )
