@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
 import './Navbar.css';
-import NewTaskModal from '../Modals/NewTaskModal';
 
 const Navbar = () => {
     return (
@@ -13,7 +12,6 @@ const Navbar = () => {
                     <Link to='/' className='brand-logo'>Start</Link>
                     <SignedInLinks />
                     <SignedOutLinks />
-                    <NewTaskModal />
                 </div>
             </nav>
         </div>
