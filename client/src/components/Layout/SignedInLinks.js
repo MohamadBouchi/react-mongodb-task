@@ -2,10 +2,20 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Modal, Button } from 'react-materialize';
 import NewTaskModal from '../Modals/NewTaskModal';
+import NewUserModal from '../Modals/NewUserModal';
 
 const SignedInLinks = () => {
     return (
         <ul className='right'>
+        <li>
+                <Modal
+                    bottomSheet
+                    header='New User'
+                    actions={<Button>Create</Button>}
+                    trigger={<a>Create User</a>}>
+                    <NewUserModal/>
+                </Modal>
+            </li>
             <li>
                 <Modal
                     bottomSheet

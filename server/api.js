@@ -4,6 +4,7 @@ const graphQlHttp = require('express-graphql');
 const { buildSchema } = require('graphql');
 const mongoose = require ('mongoose');
 const Task = require('./models/tasks');
+const User = require('./models/users');
 const cors = require ('cors')
 const app = express();
 app.use(bodyParser.json(), cors());
@@ -35,12 +36,35 @@ app.use('/graphql', graphQlHttp({
             date: String!
         }
 
+
+        type User {
+            _id: ID!
+            userName: String!
+            firstName: String!
+            lastName: String!
+            email: String!
+            password: String!
+            userType: String!
+        }
+
+        input UserInput {
+            userName: String!
+            firstName: String!
+            lastName: String!
+            email: String!
+            password: String!
+            userType: String!
+        }
+
+
         type RootQuery {
             tasks: [Task!]!
+            users: [User!]!
         }
 
         type RootMutation {
             createTask(taskInput: TaskInput): Task
+            createUser(userInput: UserInput): User
         }
         schema {
             query: RootQuery 
@@ -59,6 +83,17 @@ app.use('/graphql', graphQlHttp({
                 throw err;
             });
         },
+        users: () => {
+            return User.find()
+            .then(users => {
+                return users.map(user=>{
+                    return { ...user._doc, _id: user.id }
+                });
+            })
+            .catch(err => {
+                throw err;
+            });
+        },
         createTask: (args) => {
             const task = new Task({
                 title: args.taskInput.title,
@@ -69,6 +104,24 @@ app.use('/graphql', graphQlHttp({
             .then(res => {
                 // console.log(res);
                 return { ...res._doc, _id: task._doc._id.toString() };
+            })
+            .catch(err => {
+                console.log(err);
+                throw err;
+            });
+        },
+        createUser: (args) => {
+            const user = new User({
+                userName: args.userInput.userName,
+                firstName: args.userInput.firstName,
+                lastName: args.userInput.lastName,
+                email: args.userInput.email,
+                userType: args.userInput.userType,
+                password: args.userInput.password
+            });
+            return user.save()
+            .then(res => {
+                return { ...res._doc, _id: user._doc._id.toString() };
             })
             .catch(err => {
                 console.log(err);
