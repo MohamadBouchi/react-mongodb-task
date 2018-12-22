@@ -6,7 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import 'materialize-css/dist/js/materialize.js';
 import 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';
+import ApolloClient from "apollo-boost";
 
+export const client = new ApolloClient({
+  uri: "http://localhost:3001/graphql"
+});
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

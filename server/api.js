@@ -4,10 +4,16 @@ const graphQlHttp = require('express-graphql');
 const { buildSchema } = require('graphql');
 const mongoose = require ('mongoose');
 const Task = require('./models/tasks');
-
+const cors = require ('cors')
 const app = express();
-app.use(bodyParser.json());
-const conn = mongoose.connect('mongodb://localhost:27017/ToDo', { useNewUrlParser: true }).then(() => {
+app.use(bodyParser.json(), cors());
+// const conn = mongoose.connect('mongodb://localhost:27017/ToDo', { useNewUrlParser: true }).then(() => {
+//     app.listen(3001);
+//     console.log("connected");
+// }).catch( err => {
+//     console.log(err);
+// });
+const conn = mongoose.connect('mongodb+srv://ToDoUser:2vU46VcaTsmSE557@cluster0-autbo.mongodb.net/ToDo?retryWrites=true', { useNewUrlParser: true }).then(() => {
     app.listen(3001);
     console.log("connected");
 }).catch( err => {
@@ -61,7 +67,7 @@ app.use('/graphql', graphQlHttp({
             });
             return task.save()
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 return { ...res._doc, _id: task._doc._id.toString() };
             })
             .catch(err => {

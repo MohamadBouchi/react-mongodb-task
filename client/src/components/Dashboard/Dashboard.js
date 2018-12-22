@@ -5,8 +5,18 @@ import InProcessing from './InProcessing';
 import Open from './Open';
 import Navbar from '../Layout/Navbar';
 import './Dashboard.css';
+import gql from "graphql-tag";
+import {graphql} from 'react-apollo'
 
+const query = gql`
+    {
+      tasks {
+        title
+      }
+    }
+  `
 class Dashboard extends Component {
+  
   state = {
       tasks : [
       {name:'Task1',status:'open',assigend:'mb',id:1, desc:'M0040 Ausschreibungsauswertung Pannes'},
@@ -74,6 +84,8 @@ class Dashboard extends Component {
     }
   }
   render() {
+    if(!this.props.data.loading)
+      console.log(this.props.data.tasks);
     let tasks = {
       open: [],
       inprocessing: [],
@@ -122,4 +134,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default graphql(query)(Dashboard);

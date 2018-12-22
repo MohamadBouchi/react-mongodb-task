@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-boost": "^0.1.23",
+    "graphql": "^14.0.2",
     "material-icons": "^0.2.3",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.6.3",
+    "react-apollo": "^2.3.3",
     "react-dnd": "^7.0.2",
     "react-dnd-html5-backend": "^7.0.2",
     "react-dom": "^16.6.3",
