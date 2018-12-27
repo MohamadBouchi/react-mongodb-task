@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Row, Input } from 'react-materialize';
 import './Modal.css';
 import gql from "graphql-tag";
-import {graphql} from 'react-apollo'
-
+import { graphql } from 'react-apollo'
+import { Modal, Button } from 'react-materialize';
 
 const query = gql`
     {
@@ -23,36 +23,42 @@ const createTask = gql`
 }
   `
 class NewTaskModal extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      title:'',
+      title: '',
       description: '',
       date: ''
     }
   }
-  submitForm(e){
+  submitForm(e) {
     e.preventDefault();
-    
-    this.props.mutate({variables:{
-      title:this.state.title,
-      description:this.state.description,
-      date:this.state.date
-    }, refetchQueries :[{query: query}]
-  });
+
+    this.props.mutate({
+      variables: {
+        title: this.state.title,
+        description: this.state.description,
+        date: this.state.date
+      }, refetchQueries: [{ query: query }]
+    });
   }
   render() {
     return (
-      <div>
-        <Row>
-          <form onSubmit={this.submitForm.bind(this)} id='taskform'>
-          <Input label='Date' name='on' type='date' onChange={(e) => this.setState({date:new Date(e.target.value).toISOString()})}/>
-          <Input s={6} label="Task Title" onChange={(e) => this.setState({title:e.target.value})}/>
-          <Input s={10} label="Task Description" type='textarea' onChange={(e) => this.setState({description:e.target.value})}/>
-          <button>test</button>
-          </form>
-        </Row>
-      </div>
+      <Modal id='taskModal'
+        open={this.props.open}
+        bottomSheet
+        header='New Task'
+        actions={<Button onClick={this.submitForm.bind(this)}>Create</Button>}>
+        <div>
+          <Row>
+            <form id='taskform'>
+              <Input label='Date' name='on' type='date' onChange={(e) => this.setState({ date: new Date(e.target.value).toISOString() })} />
+              <Input s={6} label="Task Title" onChange={(e) => this.setState({ title: e.target.value })} />
+              <Input s={10} label="Task Description" type='textarea' onChange={(e) => this.setState({ description: e.target.value })} />
+            </form>
+          </Row>
+        </div>
+      </Modal>
     )
   }
 }
