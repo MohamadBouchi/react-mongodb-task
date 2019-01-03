@@ -12,6 +12,7 @@ const query = gql`
     {
       tasks {
         title
+        description
       }
     }
   `

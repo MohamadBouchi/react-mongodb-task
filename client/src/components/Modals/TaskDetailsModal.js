@@ -85,7 +85,6 @@ export default class TaskDetailsModal extends Component {
                         </div>
                     </Tab>
                 </Tabs>
-
             </div>
         )
     }

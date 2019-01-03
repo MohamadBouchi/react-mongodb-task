@@ -41,6 +41,7 @@ class NewTaskModal extends Component {
         date: this.state.date
       }, refetchQueries: [{ query: query }]
     });
+    this.setState({date: '', title: '', description: ''})
   }
   render() {
     return (
@@ -52,9 +53,9 @@ class NewTaskModal extends Component {
         <div>
           <Row>
             <form id='taskform'>
-              <Input label='Date' name='on' type='date' onChange={(e) => this.setState({ date: new Date(e.target.value).toISOString() })} />
-              <Input s={6} label="Task Title" onChange={(e) => this.setState({ title: e.target.value })} />
-              <Input s={10} label="Task Description" type='textarea' onChange={(e) => this.setState({ description: e.target.value })} />
+              <Input label='Date' name='on' type='date' onChange={(e) => this.setState({ date: new Date(e.target.value).toISOString() })} value={this.state.date}/>
+              <Input s={6} label="Task Title" onChange={(e) => this.setState({ title: e.target.value })} value={this.state.title}/>
+              <Input s={10} label="Task Description" type='textarea' onChange={(e) => this.setState({ description: e.target.value })} value={this.state.description}/>
             </form>
           </Row>
         </div>
